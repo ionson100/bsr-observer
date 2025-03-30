@@ -1,4 +1,4 @@
-declare function getRandomStrings(length: number): string;
+declare function GetRandomStrings(length: number): string;
 declare class INotifyPropertyChanged {
     private mapAction;
     constructor();
@@ -7,7 +7,5 @@ declare class INotifyPropertyChanged {
     ___removeAction(id: string): boolean;
 }
 declare function CreateObserver<T extends INotifyPropertyChanged>(o: T): () => T;
-declare function CreateObserverForClass<T extends INotifyPropertyChanged>(o: T, callback: (propertyName?: string) => void): string;
-declare function DeleteObserverForClass<T extends INotifyPropertyChanged>(o: T, id: string): boolean;
 
-export { CreateObserver, CreateObserverForClass, DeleteObserverForClass, INotifyPropertyChanged, getRandomStrings };
+export { CreateObserver, GetRandomStrings, INotifyPropertyChanged };

@@ -13,24 +13,82 @@ npm install --save bsr-observer
 ## Usage
 
 ```tsx
-import {Menu, MenuItem} from "bsr-horizontal-menu";
-import 'bsr-horizontal-menu/dist/index.css'
 
-export default function App(){
-    return(
-        <Menu>
-            <MenuItem  href={"#id-1"} content={'menu:1'}/>
-            <MenuItem  content={'menu:2'}>
-                <MenuItem content={'menu:2-1'}/>
-                <MenuItem content={'menu:2-2'} dropPosition={'right'}>
-                    <MenuItem content={'menu1'}/>
-                    <MenuItem content={'menu2'}/>
-                    <MenuItem href={"#id-2-2"} content={'menu3'}/>
-                </MenuItem>
-            </MenuItem>
-        </Menu>
+import {INotifyPropertyChanged,CreateObserver,GetRandomStrings} from "bsr-observer"
+import './App.css'
+import {useEffect, useState} from "react";
+import * as React from "react";
+
+class MSettings extends INotifyPropertyChanged {
+    public count=0;
+    increment(){
+        this.count++
+        this.OnPropertyChanged("increment")
+    }
+}
+const settings=new MSettings()
+const useSettings=CreateObserver(settings)
+
+export default function App() {
+    const mSettings:MSettings = useSettings()
+
+    return (
+        <>
+            <div className="card">
+                <button onClick={() => mSettings.increment()}>+1
+                    count is {mSettings.count}
+                </button>
+            </div>
+        </>
     )
 }
+
+export  function App1() {
+    const [, setUpdate] = useState("")
+    useEffect(()=>{
+        const  id=settings.___addAction((s:string|undefined)=>{
+            console.log(`func ${s}`);
+            setUpdate(GetRandomStrings(10))
+        });
+        return () => {settings.___removeAction(id)}
+    },[])
+
+    return (
+        <>
+            <div className="card">
+                <button onClick={() => settings.increment()}>+1
+                    count is {settings.count}
+                </button>
+            </div>
+        </>
+    )
+}
+export class App2 extends React.Component {
+    private mSettings=settings
+    private id=''
+
+    componentDidMount() {
+        this.id= this.mSettings.___addAction((s:string|undefined)=>{
+            console.log(`class ${s}`);
+            this.setState({id:GetRandomStrings(10)})
+        })
+    }
+    componentWillUnmount() {
+        this.mSettings.___removeAction(this.id)
+    }
+    render() {
+        return (
+            <>
+                <div className="card">
+                    <button onClick={() => this.mSettings.increment()}>+1
+                        count is {this.mSettings.count}
+                    </button>
+                </div>
+            </>
+        );
+    }
+}
+
 ```
 
 ## License

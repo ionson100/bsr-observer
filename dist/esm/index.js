@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function getRandomStrings(length) {
+function GetRandomStrings(length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>?/|.[]@#!~`$%^&*()_-+=:"';
     var charactersLength = characters.length;
@@ -14,12 +14,13 @@ var INotifyPropertyChanged = /** @class */ (function () {
         this.mapAction = new Map();
     }
     INotifyPropertyChanged.prototype.OnPropertyChanged = function (propertyName) {
+        var _this = this;
         this.mapAction.forEach(function (value) {
-            value.apply(propertyName);
+            value.apply(_this, [propertyName]);
         });
     };
     INotifyPropertyChanged.prototype.___addAction = function (a) {
-        var id = getRandomStrings(10);
+        var id = GetRandomStrings(10);
         this.mapAction.set(id, a);
         return id;
     };
@@ -30,9 +31,9 @@ var INotifyPropertyChanged = /** @class */ (function () {
 }());
 function CreateObserver(o) {
     return function () {
-        var _a = useState(getRandomStrings(12)), setOb = _a[1];
+        var _a = useState(GetRandomStrings(10)), setOb = _a[1];
         useEffect(function () {
-            var id = o.___addAction(function () { setOb(getRandomStrings(13)); });
+            var id = o.___addAction(function () { setOb(GetRandomStrings(10)); });
             return function () {
                 o.___removeAction(id);
             };
@@ -40,11 +41,5 @@ function CreateObserver(o) {
         return o;
     };
 }
-function CreateObserverForClass(o, callback) {
-    return o.___addAction(function () { callback(); });
-}
-function DeleteObserverForClass(o, id) {
-    return o.___removeAction(id);
-}
 
-export { CreateObserver, CreateObserverForClass, DeleteObserverForClass, INotifyPropertyChanged, getRandomStrings };
+export { CreateObserver, GetRandomStrings, INotifyPropertyChanged };

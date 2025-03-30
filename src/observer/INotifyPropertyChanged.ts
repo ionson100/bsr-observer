@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
- export function getRandomStrings(length:number) {
+ export function GetRandomStrings(length:number) {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>?/|.[]@#!~`$%^&*()_-+=:"';
     const charactersLength = characters.length;
@@ -20,11 +20,11 @@ export class INotifyPropertyChanged {
      }
      public OnPropertyChanged(propertyName?:string){
         this.mapAction.forEach((value) => {
-            value.apply(propertyName);
+            value.apply(this,[propertyName]);
         })
      }
         ___addAction(a:(propertyName?:string)=>void):string{
-       const id = getRandomStrings(10);
+       const id = GetRandomStrings(10);
        this.mapAction.set(id,a)
          return id;
      }
@@ -37,10 +37,10 @@ export class INotifyPropertyChanged {
 export function  CreateObserver<T extends INotifyPropertyChanged>(o:T){
     return ()=>{
 
-        const [, setOb] = useState(getRandomStrings(12))
+        const [, setOb] = useState(GetRandomStrings(10))
         useEffect(()=>{
 
-            const  id=o.___addAction(()=>{setOb(getRandomStrings(13))})
+            const  id=o.___addAction(()=>{setOb(GetRandomStrings(10))})
             return ()=>{
                 o.___removeAction(id)
             }
@@ -49,11 +49,5 @@ export function  CreateObserver<T extends INotifyPropertyChanged>(o:T){
 
         return o
     }
-}
-export function CreateObserverForClass<T extends INotifyPropertyChanged>(o:T, callback:(propertyName?:string)=>void){
-    return o.___addAction(()=>{callback()});
-}
-export function DeleteObserverForClass<T extends INotifyPropertyChanged>(o:T, id:string){
-    return o.___removeAction(id);
 }
 
