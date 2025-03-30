@@ -1,44 +1,75 @@
-{
-  "name": "bsr-observer",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.126",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+ {
+    "name": "bsr-observer",
+    "version": "0.0.1",
+    "description": "React observer ",
+    "author": "ionson100",
+    "license": "MIT",
+    "keywords": [
+      "react",
+      "observer",
+      "NotifyProperty"
+
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "repository": "https://github.com/ionson100/bsr-observer",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/index.d.ts",
+    "homepage": "https://ionson100.github.io/wwwroot/index.html#page=30-2",
+    "files": [
+      "dist",
+      "README.md"
+    ],
+    "peerDependencies": {
+      "react": "*"
+    },
+    "scripts": {
+      "build": "rollup -c --bundleConfigAsCjs"
+    },
+    "eslintConfig": {
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
+    },
+    "devDependencies": {
+      "react": "^18.3.1",
+      "react-dom": "^18.3.1",
+
+      "@rollup/plugin-commonjs": "^25.0.7",
+      "@rollup/plugin-node-resolve": "^15.2.3",
+      "@rollup/plugin-terser": "^0.4.4",
+      "@rollup/plugin-typescript": "^11.1.6",
+      "@types/jest": "^27.5.2",
+      "@types/node": "^16.18.97",
+      "@types/react": "^18.3.2",
+      "@types/react-dom": "^18.3.0",
+      "@types/uuid": "^10.0.0",
+      "eslint": "^7.32.0",
+      "eslint-plugin-react": "^7.26.1",
+      "postcss": "^8.4.38",
+      "postcss-modules": "^6.0.0",
+
+      "react-scripts": "5.0.1",
+      "rollup": "^4.17.2",
+      "rollup-plugin-css-only": "^4.5.2",
+      "rollup-plugin-dts": "^6.1.0",
+      "rollup-plugin-import-css": "^3.5.0",
+      "rollup-plugin-lib-style": "^1.2.6",
+      "rollup-plugin-peer-deps-external": "^2.2.4",
+      "rollup-plugin-postcss": "^4.0.2",
+      "typescript": "^4.9.5"
+
+    }
   }
-}
