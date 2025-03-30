@@ -1,4 +1,4 @@
-# bsr-table-extension
+# bsr-observer
 
 > React observer
 

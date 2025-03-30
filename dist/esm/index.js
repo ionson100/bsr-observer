@@ -13,9 +13,9 @@ var INotifyPropertyChanged = /** @class */ (function () {
     function INotifyPropertyChanged() {
         this.mapAction = new Map();
     }
-    INotifyPropertyChanged.prototype.OnPropertyChanged = function (s) {
+    INotifyPropertyChanged.prototype.OnPropertyChanged = function (propertyName) {
         this.mapAction.forEach(function (value) {
-            value.apply(s);
+            value.apply(propertyName);
         });
     };
     INotifyPropertyChanged.prototype.___addAction = function (a) {

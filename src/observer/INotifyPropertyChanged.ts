@@ -13,14 +13,14 @@ import {useEffect, useState} from "react";
 
 
 export class INotifyPropertyChanged {
-     private mapAction:Map<string,()=>void>
+     private mapAction:Map<string,(propertyName?:string)=>void>
      constructor(){
-        this.mapAction = new Map<string, () => void>();
+        this.mapAction = new Map<string, (propertyName?:string) => void>();
 
      }
-     public OnPropertyChanged(s?:string|unknown){
+     public OnPropertyChanged(propertyName?:string){
         this.mapAction.forEach((value) => {
-            value.apply(s);
+            value.apply(propertyName);
         })
      }
         ___addAction(a:()=>void):string{
@@ -50,7 +50,7 @@ export function  CreateObserver<T extends INotifyPropertyChanged>(o:T){
         return o
     }
 }
-export function CreateObserverForClass<T extends INotifyPropertyChanged>(o:T, callback:()=>void){
+export function CreateObserverForClass<T extends INotifyPropertyChanged>(o:T, callback:(propertyName?:string)=>void){
     return o.___addAction(()=>{callback()});
 }
 export function DeleteObserverForClass<T extends INotifyPropertyChanged>(o:T, id:string){
