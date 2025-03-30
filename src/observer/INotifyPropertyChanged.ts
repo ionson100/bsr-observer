@@ -23,13 +23,13 @@ export class INotifyPropertyChanged {
             value.apply(propertyName);
         })
      }
-        ___addAction(a:()=>void):string{
+        ___addAction(a:(propertyName?:string)=>void):string{
        const id = getRandomStrings(10);
        this.mapAction.set(id,a)
          return id;
      }
       ___removeAction(id:string):boolean{
-       return  this.mapAction.delete(id)
+       return  this.mapAction.has(id)?this.mapAction.delete(id):false
      }
 }
 

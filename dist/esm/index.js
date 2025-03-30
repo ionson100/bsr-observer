@@ -24,7 +24,7 @@ var INotifyPropertyChanged = /** @class */ (function () {
         return id;
     };
     INotifyPropertyChanged.prototype.___removeAction = function (id) {
-        return this.mapAction.delete(id);
+        return this.mapAction.has(id) ? this.mapAction.delete(id) : false;
     };
     return INotifyPropertyChanged;
 }());
