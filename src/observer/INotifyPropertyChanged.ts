@@ -13,11 +13,9 @@ import {useEffect, useState} from "react";
 
 
 export class INotifyPropertyChanged {
-     private mapAction:Map<string,(propertyName?:string)=>void>
-     constructor(){
-        this.mapAction = new Map<string, (propertyName?:string) => void>();
+     private mapAction=new Map<string, (propertyName?:string) => void>();
 
-     }
+
      public OnPropertyChanged(propertyName?:string){
         this.mapAction.forEach((value) => {
             value.apply(this,[propertyName]);

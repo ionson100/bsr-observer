@@ -1,7 +1,6 @@
 declare function GetRandomStrings(length: number): string;
 declare class INotifyPropertyChanged {
     private mapAction;
-    constructor();
     OnPropertyChanged(propertyName?: string): void;
     ___addAction(a: (propertyName?: string) => void): string;
     ___removeAction(id: string): boolean;
