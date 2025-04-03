@@ -18,7 +18,10 @@ export class INotifyPropertyChanged {
 
      public OnPropertyChanged(propertyName?:string,userData?:any){
         this.mapAction.forEach((value) => {
-            value.apply(this,[propertyName,userData]);
+            setTimeout(()=>{
+                value.apply(this,[propertyName,userData]);
+            })
+
         })
      }
         ___addAction(a:(propertyName?:string,userData?:any)=>void):string{

@@ -18,7 +18,9 @@ var INotifyPropertyChanged = /** @class */ (function () {
     INotifyPropertyChanged.prototype.OnPropertyChanged = function (propertyName, userData) {
         var _this = this;
         this.mapAction.forEach(function (value) {
-            value.apply(_this, [propertyName, userData]);
+            setTimeout(function () {
+                value.apply(_this, [propertyName, userData]);
+            });
         });
     };
     INotifyPropertyChanged.prototype.___addAction = function (a) {
