@@ -13,15 +13,15 @@ import {useEffect, useState} from "react";
 
 
 export class INotifyPropertyChanged {
-     private mapAction=new Map<string, (propertyName?:string) => void>();
+     private mapAction=new Map<string, (propertyName?:string,userData?:any) => void>();
 
 
-     public OnPropertyChanged(propertyName?:string){
+     public OnPropertyChanged(propertyName?:string,userData?:any){
         this.mapAction.forEach((value) => {
-            value.apply(this,[propertyName]);
+            value.apply(this,[propertyName,userData]);
         })
      }
-        ___addAction(a:(propertyName?:string)=>void):string{
+        ___addAction(a:(propertyName?:string,userData?:any)=>void):string{
        const id = GetRandomStrings(10);
        this.mapAction.set(id,a)
          return id;
