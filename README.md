@@ -2,7 +2,7 @@
 
 > React observer
 
-[![NPM](https://img.shields.io/npm/v/bsr-observer.svg)](https://www.npmjs.com/package/bsr-horizontal-menu) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/bsr-observer.svg)](https://www.npmjs.com/package/bsr-observer) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
