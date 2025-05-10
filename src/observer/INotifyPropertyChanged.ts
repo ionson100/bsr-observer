@@ -12,7 +12,7 @@ import {useEffect, useState} from "react";
 
 
 
-export class INotifyPropertyChanged {
+export  class INotifyPropertyChanged {
      private mapAction=new Map<string, (propertyName?:string,userData?:any) => void>();
 
 
