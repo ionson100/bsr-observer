@@ -6,5 +6,6 @@ declare class INotifyPropertyChanged {
     ___removeAction(id: string): boolean;
 }
 declare function CreateObserver<T extends INotifyPropertyChanged>(o: T): () => T;
+declare function useObserver<T extends INotifyPropertyChanged>(o: T, callback: (propertyName?: string, userData?: any) => void): void;
 
-export { CreateObserver, GetRandomStrings, INotifyPropertyChanged };
+export { CreateObserver, GetRandomStrings, INotifyPropertyChanged, useObserver };

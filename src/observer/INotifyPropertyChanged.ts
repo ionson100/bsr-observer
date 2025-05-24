@@ -51,4 +51,12 @@ export function  CreateObserver<T extends INotifyPropertyChanged>(o:T){
         return o
     }
 }
+export function useObserver<T extends INotifyPropertyChanged>(o:T,callback:(propertyName?:string,userData?:any)=>void){
+    const  id=o.___addAction(callback)
+    useEffect(()=>{
+        return ()=>{
+            o.___removeAction(id)
+        }
+    },[])
+}
 
